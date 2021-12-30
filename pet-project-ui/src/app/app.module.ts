@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
+import { ClientComponent } from './client/client.component';
+import { InsuranceContractComponent } from './insurance-contract/insurance-contract.component';
+import { AddClientComponent } from './add-client/add-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FirstComponent,
-    SecondComponent
+    ClientComponent,
+    InsuranceContractComponent,
+    AddClientComponent
   ],
   imports: [
     BrowserModule,

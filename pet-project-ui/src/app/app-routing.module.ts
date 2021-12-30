@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FirstComponent} from './first/first.component';
-import { SecondComponent } from './second/second.component';
+import { ClientComponent} from './client/client.component';
+import { InsuranceContractComponent} from './insurance-contract/insurance-contract.component';
+import { AddClientComponent } from './add-client/add-client.component';
 
 const routes: Routes = [
-  { path: 'first-component', component: FirstComponent},
-  { path: 'second-component', component: SecondComponent}
+  { path: 'insurance-contract-component', component: InsuranceContractComponent},
+  { path: 'client-component', component: ClientComponent},
+  { path: 'add-client-component', component: AddClientComponent}
 ];
 
 @NgModule({
