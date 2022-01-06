@@ -11,11 +11,12 @@ import { CreateClientComponent } from './create-client/create-client.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
-import { ClientResolver } from './services/client.resolver';
+import { ClientResolver } from './resolvers/client.resolver';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { ShortClientResolver } from './resolvers/short.client.resolver';
 
 @NgModule({
   declarations: [
@@ -25,21 +26,21 @@ import { MatCardModule } from '@angular/material/card';
     CreateClientComponent,
     ClientDetailComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatNativeDateModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule
-    ],
-  providers: [ ClientResolver ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule
+  ],
+  providers: [ ClientResolver, ShortClientResolver ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

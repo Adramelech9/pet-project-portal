@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client/client.component';
 import { InsuranceContractComponent } from './insurance-contract/insurance-contract.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
-import { ClientResolver } from './services/client.resolver';
+import { ShortClientResolver } from './resolvers/short.client.resolver';
+import { ClientResolver } from './resolvers/client.resolver';
 
 const routes: Routes = [
   { path: 'insurance-contract-component', component: InsuranceContractComponent },
-  { path: 'client-component', component: ClientComponent },
-  { path: 'client-component/:id', component: ClientDetailComponent, resolve: { client: ClientResolver } }
+  { path: 'clients', component: ClientComponent, resolve: { client: ShortClientResolver } },
+  { path: 'clients/:id', component: ClientDetailComponent, resolve: { client: ClientResolver } }
 ];
 
 @NgModule({

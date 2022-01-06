@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../client';
 import { ClientService } from '../services/client.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { States } from '../constant/states.constant';
 
 @Component({
@@ -18,21 +18,16 @@ export class ClientComponent implements OnInit {
 
   constructor(
     private clientService: ClientService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
   ngOnInit(): void {
-    this.getClients();
+    this.clients = this.activatedRoute.snapshot.data[ 'client' ];
   }
 
-  private getClients() {
-    this.clientService.getClientsList().subscribe(data => {
-      this.clients = data;
-    })
-  }
-
-  onView(row: Client) {
-    this.router.navigate([ States.CLIENTS_VIEW(row.id) ])
+  onView(row: Client): void {
+     this.router.navigate([ States.CLIENTS_VIEW(row.id) ])
   }
 }

@@ -1,5 +1,5 @@
 export class Endpoints {
 
-  static readonly BASEURL = '/api/clients';
-  static readonly CLIENT_DETAIL = (id: number) => `${ Endpoints.BASEURL }/${ id }`
+  static readonly CLIENT = '/api/clients';
+  static readonly CLIENT_DETAIL = (id: number) => `${ Endpoints.CLIENT }/${ id }`
 }
