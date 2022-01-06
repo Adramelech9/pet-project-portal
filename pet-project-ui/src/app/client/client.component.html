@@ -1,7 +1,10 @@
-<p>client works!</p>
-<nav>
-  <ul>
-    <li><a routerLink="add-client-component">add client</a></li>
-    <li><a routerLink="client-info-component">client info</a></li>
-  </ul>
-</nav>
+<table mat-table [dataSource]="clients" class="table">
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element">{{element[column]}}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row (click)="onView(row)"
+      *matRowDef="let row; columns: displayedColumns;"
+  ></tr>
+</table>
