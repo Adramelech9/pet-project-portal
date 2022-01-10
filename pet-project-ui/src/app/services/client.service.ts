@@ -17,8 +17,8 @@ export class ClientService {
     return this.http.get<Client[]>(Endpoints.CLIENT);
   }
 
-  getClientById(id: number): Observable<ClientDetail[]> {
-    return this.http.get<ClientDetail[]>(Endpoints.CLIENT_DETAIL(id));
+  getClientById(id: number): Observable<ClientDetail> {
+    return this.http.get<ClientDetail>(Endpoints.CLIENT_DETAIL(id));
   }
 
 }

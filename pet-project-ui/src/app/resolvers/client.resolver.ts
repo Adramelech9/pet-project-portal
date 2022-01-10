@@ -5,12 +5,12 @@ import { ClientService } from '../services/client.service';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ClientResolver implements Resolve<ClientDetail[]> {
+export class ClientResolver implements Resolve<ClientDetail> {
 
   constructor(private clientService: ClientService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ClientDetail[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ClientDetail> {
     return this.clientService.getClientById(route.params[ 'id' ])
   }
 }

@@ -1,18 +1,27 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientComponent } from './client/client.component';
 import { InsuranceContractComponent } from './insurance-contract/insurance-contract.component';
-import { ClientDetailComponent } from './client-detail/client-detail.component';
-import { ShortClientResolver } from './resolvers/short.client.resolver';
-import { ClientResolver } from './resolvers/client.resolver';
+
+@Injectable()
+export class Throttle {
+  resolve() {
+    return new Promise(resolve => setTimeout(resolve, 500));
+  }
+}
 
 const routes: Routes = [
   { path: 'insurance-contract-component', component: InsuranceContractComponent },
-  { path: 'clients', component: ClientComponent, resolve: { client: ShortClientResolver } },
-  { path: 'clients/:id', component: ClientDetailComponent, resolve: { client: ClientResolver } }
+  {
+    path: '',
+    loadChildren: () => import('./client/client-routing.module').then(m => m.ClientRoutingModule),
+    resolve: {
+      Throttle
+    }
+  }
 ];
 
 @NgModule({
+  providers: [ Throttle ],
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })

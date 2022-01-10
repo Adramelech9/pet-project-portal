@@ -30,4 +30,8 @@ export class ClientComponent implements OnInit {
   onView(row: Client): void {
      this.router.navigate([ States.CLIENTS_VIEW(row.id) ])
   }
+
+  addClient() {
+    this.router.navigate([States.CLIENTS_CREAT])
+  }
 }

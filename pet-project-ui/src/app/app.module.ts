@@ -7,24 +7,25 @@ import { ClientComponent } from './client/client.component';
 import { InsuranceContractComponent } from './insurance-contract/insurance-contract.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateClientComponent } from './create-client/create-client.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
-import { ClientDetailComponent } from './client-detail/client-detail.component';
+import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import { ClientResolver } from './resolvers/client.resolver';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ShortClientResolver } from './resolvers/short.client.resolver';
+import { ClientCreateComponent } from './client/client-create/client-create.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientComponent,
     InsuranceContractComponent,
-    CreateClientComponent,
-    ClientDetailComponent
+    ClientDetailComponent,
+    ClientCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ import { ShortClientResolver } from './resolvers/short.client.resolver';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [ ClientResolver, ShortClientResolver ],
   bootstrap: [ AppComponent ]

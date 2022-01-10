@@ -1,0 +1,61 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Company (disabled)</mat-label>
+    <input matInput [disabled]="client.email != ''" value="{{client.firstName}}">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>LastName</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+</form>
+<form>
+<h3 mat-dialog-title>
+  <mat-card>
+    <mat-card-subtitle>
+      First Name
+      <!--<input *ngIf="client == null" type="text" id="firstName"/>-->
+    </mat-card-subtitle>
+    {{client.firstName}}
+  </mat-card>
+</h3>
+<h3 mat-dialog-title>
+  <mat-card>
+    <mat-card-subtitle>
+      Last Name
+    </mat-card-subtitle>
+    {{client.lastName}}
+  </mat-card>
+</h3>
+<h3 mat-dialog-title>
+  <mat-card>
+    <mat-card-subtitle>
+      Birthday
+    </mat-card-subtitle>
+    {{client.birthDate}}
+  </mat-card>
+</h3>
+<h3 mat-dialog-title>
+  <mat-card>
+    <mat-card-subtitle>
+      Email
+    </mat-card-subtitle>
+    {{client.email}}
+  </mat-card>
+</h3>
+<h3 mat-dialog-title>
+  <mat-card>
+    <mat-card-subtitle>
+      Password
+    </mat-card-subtitle>
+    {{client.password}}
+  </mat-card>
+</h3>
+</form>
