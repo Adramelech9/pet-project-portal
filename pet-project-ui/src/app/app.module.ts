@@ -7,7 +7,7 @@ import { ClientComponent } from './client/client.component';
 import { InsuranceContractComponent } from './insurance-contract/insurance-contract.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { ClientDetailComponent } from './client/client-detail/client-detail.component';
 import { ClientResolver } from './resolvers/client.resolver';
@@ -16,16 +16,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ShortClientResolver } from './resolvers/short.client.resolver';
-import { ClientCreateComponent } from './client/client-create/client-create.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClientComponent,
     InsuranceContractComponent,
-    ClientDetailComponent,
-    ClientCreateComponent
+    ClientDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +40,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule
   ],
   providers: [ ClientResolver, ShortClientResolver ],
   bootstrap: [ AppComponent ]

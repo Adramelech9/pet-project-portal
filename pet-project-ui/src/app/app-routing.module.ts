@@ -12,7 +12,7 @@ export class Throttle {
 const routes: Routes = [
   { path: 'insurance-contract-component', component: InsuranceContractComponent },
   {
-    path: '',
+    path: 'clients',
     loadChildren: () => import('./client/client-routing.module').then(m => m.ClientRoutingModule),
     resolve: {
       Throttle

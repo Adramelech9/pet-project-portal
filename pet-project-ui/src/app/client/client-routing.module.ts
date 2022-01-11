@@ -8,9 +8,9 @@ import { ClientResolver } from '../resolvers/client.resolver';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'clients', component: ClientComponent, resolve: { client: ShortClientResolver } },
-      { path: 'clients/create', component: ClientDetailComponent },
-      { path: 'clients/:id', component: ClientDetailComponent, resolve: { client: ClientResolver } }
+      { path: '', component: ClientComponent, resolve: { client: ShortClientResolver } },
+      { path: 'create', component: ClientDetailComponent },
+      { path: ':id', component: ClientDetailComponent, resolve: { client: ClientResolver } }
     ])
   ]
 })

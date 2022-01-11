@@ -1,61 +1,43 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Company (disabled)</mat-label>
-    <input matInput [disabled]="client.email != ''" value="{{client.firstName}}">
+<form class="client-create-form">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>First Name</mat-label>
+    <a>
+      <input matInput [disabled]="currentUrl != '/clients/create'"
+             value="{{client.firstName}}" name="firstName" [(ngModel)]="client.firstName">
+    </a>
   </mat-form-field>
-
-  <table class="example-full-width" cellspacing="0"><tr>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>First name</mat-label>
-      <input matInput>
-    </mat-form-field></td>
-    <td><mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>LastName</mat-label>
-      <input matInput>
-    </mat-form-field></td>
-  </tr></table>
-
-</form>
-<form>
-<h3 mat-dialog-title>
-  <mat-card>
-    <mat-card-subtitle>
-      First Name
-      <!--<input *ngIf="client == null" type="text" id="firstName"/>-->
-    </mat-card-subtitle>
-    {{client.firstName}}
-  </mat-card>
-</h3>
-<h3 mat-dialog-title>
-  <mat-card>
-    <mat-card-subtitle>
-      Last Name
-    </mat-card-subtitle>
-    {{client.lastName}}
-  </mat-card>
-</h3>
-<h3 mat-dialog-title>
-  <mat-card>
-    <mat-card-subtitle>
-      Birthday
-    </mat-card-subtitle>
-    {{client.birthDate}}
-  </mat-card>
-</h3>
-<h3 mat-dialog-title>
-  <mat-card>
-    <mat-card-subtitle>
-      Email
-    </mat-card-subtitle>
-    {{client.email}}
-  </mat-card>
-</h3>
-<h3 mat-dialog-title>
-  <mat-card>
-    <mat-card-subtitle>
-      Password
-    </mat-card-subtitle>
-    {{client.password}}
-  </mat-card>
-</h3>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <a>
+      <input matInput [disabled]="currentUrl != '/clients/create'"
+             value="{{client.lastName}}" name="lastName" [(ngModel)]="client.lastName">
+    </a>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Birthday</mat-label>
+    <a>
+      <input matInput [matDatepicker]="picker" [disabled]="currentUrl != '/clients/create'"
+             value="{{client.birthDate}}" name="birthDate" [(ngModel)]="client.birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </a>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <a>
+      <input matInput [disabled]="currentUrl != '/clients/create'"
+             value="{{client.email}}" name="email" [(ngModel)]="client.email">
+    </a>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <a>
+      <input matInput [disabled]="currentUrl != '/clients/create'"
+             value="{{client.password}}" name="password" [(ngModel)]="client.password">
+    </a>
+  </mat-form-field>
+  <div *ngIf="currentUrl == '/clients/create'">
+    <button mat-raised-button type="submit" (click)="onSubmit()">Create</button>
+    <a mat-raised-button routerLink="/clients">Cancel</a>
+  </div>
 </form>
