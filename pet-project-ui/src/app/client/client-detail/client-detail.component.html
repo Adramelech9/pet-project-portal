@@ -1,42 +1,56 @@
 <form class="client-create-form">
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>First Name</mat-label>
-    <a>
-      <input matInput [disabled]="currentUrl != '/clients/create'"
-             value="{{client.firstName}}" name="firstName" [(ngModel)]="client.firstName">
-    </a>
+    <input matInput [disabled]="!isNewClient"
+           name="firstName" [formControl]="firstNameController">
+    <mat-error *ngIf="firstNameController.hasError('required')">
+      FirstName is <strong>required</strong>
+    </mat-error>
+
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Last Name</mat-label>
-    <a>
-      <input matInput [disabled]="currentUrl != '/clients/create'"
-             value="{{client.lastName}}" name="lastName" [(ngModel)]="client.lastName">
-    </a>
+    <input matInput [disabled]="!isNewClient"
+           name="lastName" [formControl]="lastNameController">
+    <mat-error *ngIf="lastNameController.hasError('required')">
+      LastName is <strong>required</strong>
+    </mat-error>
+
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Birthday</mat-label>
-    <a>
-      <input matInput [matDatepicker]="picker" [disabled]="currentUrl != '/clients/create'"
-             value="{{client.birthDate}}" name="birthDate" [(ngModel)]="client.birthDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </a>
+    <input matInput [matDatepicker]="picker" [disabled]="!isNewClient"
+           name="birthDate" [formControl]="birthDateController">
+    <mat-error *ngIf="birthDateController.hasError('required')">
+      Birthday is <strong>required</strong>
+    </mat-error>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Email</mat-label>
-    <a>
-      <input matInput [disabled]="currentUrl != '/clients/create'"
-             value="{{client.email}}" name="email" [(ngModel)]="client.email">
-    </a>
+    <input matInput [disabled]="!isNewClient"
+           name="email" [formControl]="emailController">
+    <mat-error *ngIf="emailController.hasError('email') &&
+                        !emailController.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="passwordController.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Password</mat-label>
-    <a>
-      <input matInput [disabled]="currentUrl != '/clients/create'"
-             value="{{client.password}}" name="password" [(ngModel)]="client.password">
-    </a>
+    <input matInput [disabled]="!isNewClient"
+           name="password" [formControl]="passwordController">
+    <mat-error *ngIf="passwordController.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+
   </mat-form-field>
-  <div *ngIf="currentUrl == '/clients/create'">
+  <div *ngIf="isNewClient">
     <button mat-raised-button type="submit" (click)="onSubmit()">Create</button>
     <a mat-raised-button routerLink="/clients">Cancel</a>
   </div>

@@ -21,7 +21,7 @@ export class ClientService {
     return this.http.get<ClientDetail>(Endpoints.CLIENT_DETAIL(id));
   }
 
-  clientCreate(client: ClientDetail): Observable<Object> {
-    return this.http.post(Endpoints.CLIENT, client)
+  clientCreate(client: ClientDetail): Observable<number> {
+    return this.http.post<number>(Endpoints.CLIENT, client)
   }
 }
