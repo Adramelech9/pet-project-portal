@@ -16,18 +16,18 @@ export class ClientDetailComponent implements OnInit {
   client: ClientDetail = new ClientDetail();
   isNewClient = true;
 
-  firstNameController = new FormControl('', [ Validators.required ]);
-  lastNameController = new FormControl('', [ Validators.required ]);
-  birthDateController = new FormControl('', [ Validators.required ]);
-  emailController = new FormControl('', [ Validators.required, Validators.email ]);
-  passwordController = new FormControl('', [ Validators.required ]);
+  firstNameControl = new FormControl('', [ Validators.required ]);
+  lastNameControl = new FormControl('', [ Validators.required ]);
+  birthDateControl = new FormControl('', [ Validators.required ]);
+  emailControl = new FormControl('', [ Validators.required, Validators.email ]);
+  passwordControl = new FormControl('', [ Validators.required ]);
 
   formGroup = new FormGroup({
-    firstName: this.firstNameController,
-    lastName: this.lastNameController,
-    birthDate: this.birthDateController,
-    email: this.emailController,
-    password: this.passwordController
+    firstName: this.firstNameControl,
+    lastName: this.lastNameControl,
+    birthDate: this.birthDateControl,
+    email: this.emailControl,
+    password: this.passwordControl
   })
 
   constructor(
@@ -42,11 +42,7 @@ export class ClientDetailComponent implements OnInit {
     if (clientData) {
       this.isNewClient = false;
       this.client = clientData;
-      this.firstNameController.setValue(this.client.firstName);
-      this.lastNameController.setValue(this.client.lastName);
-      this.birthDateController.setValue(this.client.birthDate);
-      this.emailController.setValue(this.client.email);
-      this.passwordController.setValue(this.client.password);
+      this.setControlValue();
     }
   }
 
@@ -56,5 +52,14 @@ export class ClientDetailComponent implements OnInit {
         this.router.navigate([ States.CLIENTS_VIEW(clientId) ]);
       }
     )
+  }
+
+  setControlValue() {
+    this.firstNameControl.setValue(this.client.firstName);
+    this.lastNameControl.setValue(this.client.lastName);
+    this.birthDateControl.setValue(this.client.birthDate);
+    this.emailControl.setValue(this.client.email);
+    this.passwordControl.setValue(this.client.password);
+    this.formGroup.disable();
   }
 }

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { ClientService } from '../services/client.service';
 
 @Injectable()
-export class ShortClientResolver implements Resolve<Client[]> {
+export class NameClientsResolver implements Resolve<Client[]> {
 
   constructor(private clientService: ClientService) {
   }

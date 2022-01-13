@@ -1,55 +1,50 @@
 <form class="client-create-form">
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput [disabled]="!isNewClient"
-           name="firstName" [formControl]="firstNameController">
-    <mat-error *ngIf="firstNameController.hasError('required')">
+    <input matInput [formControl]="firstNameControl">
+    <mat-error *ngIf="firstNameControl.hasError('required')">
       FirstName is <strong>required</strong>
     </mat-error>
-
   </mat-form-field>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput [disabled]="!isNewClient"
-           name="lastName" [formControl]="lastNameController">
-    <mat-error *ngIf="lastNameController.hasError('required')">
+    <input matInput [formControl]="lastNameControl">
+    <mat-error *ngIf="lastNameControl.hasError('required')">
       LastName is <strong>required</strong>
     </mat-error>
-
   </mat-form-field>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Birthday</mat-label>
-    <input matInput [matDatepicker]="picker" [disabled]="!isNewClient"
-           name="birthDate" [formControl]="birthDateController">
-    <mat-error *ngIf="birthDateController.hasError('required')">
+    <input matInput [matDatepicker]="picker" [formControl]="birthDateControl">
+    <mat-error *ngIf="birthDateControl.hasError('required')">
       Birthday is <strong>required</strong>
     </mat-error>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-
   </mat-form-field>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Email</mat-label>
-    <input matInput [disabled]="!isNewClient"
-           name="email" [formControl]="emailController">
-    <mat-error *ngIf="emailController.hasError('email') &&
-                        !emailController.hasError('required')">
+    <input matInput [formControl]="emailControl">
+    <mat-error *ngIf="emailControl.hasError('email') &&
+               !emailControl.hasError('required')">
       Please enter a valid email address
     </mat-error>
-    <mat-error *ngIf="passwordController.hasError('required')">
+    <mat-error *ngIf="passwordControl.hasError('required')">
       Email is <strong>required</strong>
     </mat-error>
-
   </mat-form-field>
+
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Password</mat-label>
-    <input matInput [disabled]="!isNewClient"
-           name="password" [formControl]="passwordController">
-    <mat-error *ngIf="passwordController.hasError('required')">
+    <input matInput [formControl]="passwordControl">
+    <mat-error *ngIf="passwordControl.hasError('required')">
       Password is <strong>required</strong>
     </mat-error>
-
   </mat-form-field>
+
   <div *ngIf="isNewClient">
     <button mat-raised-button type="submit" (click)="onSubmit()">Create</button>
     <a mat-raised-button routerLink="/clients">Cancel</a>

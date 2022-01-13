@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-insurance-contract',
   templateUrl: './insurance-contract.component.html',
-  styleUrls: ['./insurance-contract.component.css']
 })
 export class InsuranceContractComponent implements OnInit {
 
