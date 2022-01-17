@@ -4,7 +4,7 @@ import { InsuranceContractComponent } from './insurance-contract/insurance-contr
 import { States } from './constant/states.constant';
 
 const routes: Routes = [
-  { path: 'insurance-contract', component: InsuranceContractComponent },
+  { path: `${ States.CONTRACTS }`, component: InsuranceContractComponent },
   {
     path: `${ States.CLIENTS }`,
     loadChildren: () => import('./client/client-routing.module').then(m => m.ClientRoutingModule)
