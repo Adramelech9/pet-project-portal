@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientDetail } from '../../client-detail';
 import { ClientService } from '../../services/client.service';
 import { States } from '../../constant/states.constant';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +12,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ClientDetailComponent implements OnInit {
 
-  client: ClientDetail = new ClientDetail();
   isNewClient = true;
 
   firstNameControl = new FormControl('', [ Validators.required ]);
@@ -41,8 +39,7 @@ export class ClientDetailComponent implements OnInit {
     const clientData = this.activatedRoute.snapshot.data[ 'client' ];
     if (clientData) {
       this.isNewClient = false;
-      this.client = clientData;
-      this.setControlValue();
+      this.setControlValue(clientData);
     }
   }
 
@@ -54,12 +51,12 @@ export class ClientDetailComponent implements OnInit {
     )
   }
 
-  private setControlValue(): void {
-    this.firstNameControl.setValue(this.client.firstName);
-    this.lastNameControl.setValue(this.client.lastName);
-    this.birthDateControl.setValue(this.client.birthDate);
-    this.emailControl.setValue(this.client.email);
-    this.passwordControl.setValue(this.client.password);
+  private setControlValue(clientData: any): void {
+    this.firstNameControl.setValue(clientData.firstName);
+    this.lastNameControl.setValue(clientData.lastName);
+    this.birthDateControl.setValue(clientData.birthDate);
+    this.emailControl.setValue(clientData.email);
+    this.passwordControl.setValue(clientData.password);
     this.formGroup.disable();
   }
 }
