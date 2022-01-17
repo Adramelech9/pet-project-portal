@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InsuranceContractComponent } from './insurance-contract/insurance-contract.component';
+import { States } from './constant/states.constant';
 
 const routes: Routes = [
-  { path: 'insurance-contract-component', component: InsuranceContractComponent },
+  { path: 'insurance-contract', component: InsuranceContractComponent },
   {
-    path: 'clients',
+    path: `${ States.CLIENTS }`,
     loadChildren: () => import('./client/client-routing.module').then(m => m.ClientRoutingModule)
   }
 ];

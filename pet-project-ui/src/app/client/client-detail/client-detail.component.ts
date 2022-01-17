@@ -46,7 +46,7 @@ export class ClientDetailComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.clientService.clientCreate(this.formGroup.value).subscribe(
       clientId => {
         this.router.navigate([ States.CLIENTS_VIEW(clientId) ]);
@@ -54,7 +54,7 @@ export class ClientDetailComponent implements OnInit {
     )
   }
 
-  setControlValue() {
+  private setControlValue(): void {
     this.firstNameControl.setValue(this.client.firstName);
     this.lastNameControl.setValue(this.client.lastName);
     this.birthDateControl.setValue(this.client.birthDate);
